@@ -84,5 +84,11 @@ class BotCommands(commands.Cog):
     async def discord(self, ctx):
         await ctx.channel.send('https://discord.gg/RKkg7EyD43')
 
+    # GitHub Command
+    @commands.command()
+    async def github(self, ctx):
+        await ctx.channel.send('https://github.com/Sookeyy-12')
+
+
 def setup(bot):
     bot.add_cog(BotCommands(bot))
