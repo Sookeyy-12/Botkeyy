@@ -6,6 +6,7 @@ import requests
 import os
 
 x = random.randint(0,1)     # for question command
+bot = commands.Bot(command_prefix="!")  # define bot
 
 # Joke Api
 def get_joke():
@@ -34,12 +35,12 @@ class BotCommands(commands.Cog):
     # Ping command
     @commands.command()
     async def ping(self, ctx):
-        await ctx.message.channel.send("Pong!")
+        await ctx.message.channel.send("Pong! {0}".format(round(self.bot.latency, 2)))
 
     # Pong command
     @commands.command()	
     async def pong(self, ctx):
-        await ctx.channel.send("Ping!")
+        await ctx.channel.send("Ping! {0}".format(round(self.bot.latency, 2)))
 
     # Hello command
     @commands.command()
