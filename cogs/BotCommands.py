@@ -89,6 +89,16 @@ class BotCommands(commands.Cog):
     async def github(self, ctx):
         await ctx.channel.send('https://github.com/Sookeyy-12')
 
+    # Spam Command
+    @commands.command()
+    async def spam(self, ctx, n, *, sentence):
+        if int(n) <= 30:
+            for i in range(int(n)):
+                await ctx.channel.send(sentence)
+        elif int(n) > 30:
+            await ctx.channel.send('Too big, please input less than 30.')  
+        else:
+            pass
 
 def setup(bot):
     bot.add_cog(BotCommands(bot))
