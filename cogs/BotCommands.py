@@ -6,7 +6,6 @@ import requests
 import os
 import asyncio
 
-x = random.randint(0,1)     # for question command
 bot = commands.Bot(command_prefix="!")  # define bot
 
 # Joke Api
@@ -72,6 +71,7 @@ class BotCommands(commands.Cog):
     # Question Command
     @commands.command()
     async def q(self, ctx):
+        x = random.randint(0,1)     # for question command
         list1 = ['yes', 'no']
         await ctx.channel.send(list1[x])
 
