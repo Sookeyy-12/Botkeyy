@@ -104,23 +104,31 @@ class BotCommands(commands.Cog):
 
     # Guessing Game
     @commands.command()
-    async def guess(self, ctx):
-        await ctx.channel.send('Guess a Number from 0 to 10.')
-        answer = random.randint(0,10)
-        attempt = 0
-        while True:
-            attempt += 1
-            try:
-                guess = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author, timeout=10.0)
-            except asyncio.TimeoutError:
-                return await ctx.channel.send(f'Sorry, You took too long, it was {answer}.')
-            if int(guess.content) < answer:
-                await ctx.channel.send('The Number should be Bigger!')
-            elif int(guess.content) > answer:
-                await ctx.channel.send('The Number should be Smaller!')
-            elif int(guess.content) == answer:
-                await ctx.channel.send(f'Bingo! You guess the number in {attempt} attempt(s)')
-                break
+    async def guess(self, ctx, x=None, y=None):
+        if x is None or y is None :
+            await ctx.channel.send('Please Provide a Range.')
+        elif (int(y) - int(x)) > 1001:
+            await ctx.channel.send('Range too big, Please Reduce the Range.')
+        elif (int(y)-int(x)) <= 1001:
+            await ctx.channel.send(f'Guess a Number from {int(x)} to {int(y)}.')
+            answer = random.randint(int(x),int(y))
+            attempt = 0
+            while True:
+                attempt += 1
+                try:
+                    guess = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author, timeout=10.0)
+                except asyncio.TimeoutError:
+                    return await ctx.channel.send(f'Sorry, You took too long, it was {answer}.')
+                if int(attempt) == 15:
+                    await ctx.channel.send(f'You took too many attempts, the answer was {answer}!')
+                    break
+                elif int(guess.content) < answer:
+                    await ctx.channel.send('The Number should be Bigger!')
+                elif int(guess.content) > answer:
+                    await ctx.channel.send('The Number should be Smaller!')
+                elif int(guess.content) == answer:
+                    await ctx.channel.send(f'Bingo! You guess the number in {attempt} attempt(s)')
+                    break
 
 
 def setup(bot):
