@@ -3,7 +3,8 @@ from discord.ext import commands
 import random
 import asyncio
 from cogs.packages.jokes import get_joke        # importing get_joke from packages
-from cogs.packages.memes import get_meme        # importing get_meme frmo packages
+from cogs.packages.memes import get_meme        # importing get_meme from packages
+from cogs.packages.quotes import get_quote      # importing get_quote from packages
 
 bot = commands.Bot(command_prefix="!")  # define bot
 
@@ -59,6 +60,12 @@ class BotCommands(commands.Cog):
     async def meme(self, ctx):
         meme = get_meme()
         await ctx.channel.send(meme)
+
+    # Quote Command
+    @commands.command()
+    async def quote(self, ctx):
+        quote = get_quote()
+        await ctx.channel.send(quote)
 
     # Discord Command
     @commands.command()
