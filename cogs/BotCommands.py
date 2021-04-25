@@ -120,8 +120,6 @@ class BotCommands(commands.Cog):
                 await ctx.channel.send('The Number should be Smaller!')
             elif int(guess.content) == answer:
                 await ctx.channel.send(f'Bingo! You guess the number in {attempt} attempt(s)')
-            else:
-                return
                 break
 
 
