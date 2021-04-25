@@ -111,16 +111,16 @@ class BotCommands(commands.Cog):
         while True:
             attempt += 1
             try:
-                guess = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author, timeout=5.0)
+                guess = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author, timeout=10.0)
             except asyncio.TimeoutError:
-                return await message.channel.send(f'Sorry, You took too long, it was {answer}.')
+                return await ctx.channel.send(f'Sorry, You took too long, it was {answer}.')
             if int(guess.content) < answer:
                 await ctx.channel.send('The Number should be Bigger!')
             elif int(guess.content) > answer:
                 await ctx.channel.send('The Number should be Smaller!')
             elif int(guess.content) == answer:
                 await ctx.channel.send(f'Bingo! You guess the number in {attempt} attempt(s)')
-            else: 
+            else:
                 return
                 break
 
