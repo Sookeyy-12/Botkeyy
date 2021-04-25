@@ -4,6 +4,7 @@ import random
 import json
 import requests 
 import os
+import asyncio
 
 x = random.randint(0,1)     # for question command
 bot = commands.Bot(command_prefix="!")  # define bot
@@ -100,6 +101,29 @@ class BotCommands(commands.Cog):
             await ctx.channel.send('Too big, please input less than 30.')  
         else:
             pass
+
+    # Guessing Game
+    @commands.command()
+    async def guess(self, ctx):
+        await ctx.channel.send('Guess a Number from 0 to 10.')
+        answer = random.randint(0,10)
+        attempt = 0
+        while True:
+            attempt += 1
+            try:
+                guess = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author, timeout=5.0)
+            except asyncio.TimeoutError:
+                return await message.channel.send(f'Sorry, You took too long, it was {answer}.')
+            if int(guess.content) < answer:
+                await ctx.channel.send('The Number should be Bigger!')
+            elif int(guess.content) > answer:
+                await ctx.channel.send('The Number should be Smaller!')
+            elif int(guess.content) == answer:
+                await ctx.channel.send(f'Bingo! You guess the number in {attempt} attempt(s)')
+            else: 
+                return
+                break
+
 
 def setup(bot):
     bot.add_cog(BotCommands(bot))

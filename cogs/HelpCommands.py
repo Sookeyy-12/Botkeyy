@@ -7,7 +7,7 @@ class HelpCommands(commands.Cog):
 
     # Help Command
     @commands.command()
-    async def helpme(self, ctx):
+    async def help(self, ctx):
         embed=discord.Embed(title="Sookeyy - Github", url="https://github.com/Sookeyy-12", description='Come checkout my Github', color=discord.Color.random())
         embed.set_author(name = "Sookeyy#0465", url="https://github.com/Sookeyy-12", icon_url="https://i.imgur.com/vhrAZ7n.jpeg")
         embed.set_thumbnail(url="https://i.imgur.com/vhrAZ7n.jpeg")
