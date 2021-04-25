@@ -1,32 +1,11 @@
 import discord
 from discord.ext import commands
 import random
-import json
-import requests 
-import os
 import asyncio
+from cogs.packages.jokes import get_joke        # importing get_joke from packages
+from cogs.packages.memes import get_meme        # importing get_meme frmo packages
 
 bot = commands.Bot(command_prefix="!")  # define bot
-
-# Joke Api
-def get_joke():
-    response = requests.get(os.getenv('JOKE_API'))
-    json_data = json.loads(response.text)
-    if json_data['type'] == "single":
-        joke = json_data['joke']
-    else:
-        joke = json_data['setup'] + " " + json_data['delivery']
-    return(joke)
-
-# Meme Api
-def get_meme():
-    response = requests.get(os.getenv('MEME_API'))
-    json_data = json.loads(response.text)
-    if json_data['nsfw'] == True and json_data['spoiler'] == True:
-        pass
-    else:
-        meme = json_data['url']
-    return(meme)
 
 class BotCommands(commands.Cog):
     def __init__(self, bot):

@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    await bot.change_presence(status = discord.Status.idle, activity = discord.Game("!help"))
+    await bot.change_presence(status = discord.Status.online, activity = discord.Game("!help"))
 
 @bot.event
 async def on_member_join(member):
