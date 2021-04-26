@@ -23,6 +23,7 @@ class HelpCommands(commands.Cog):
         embed.add_field(name="!discord", value="Join the Bot's Official Discord and share your views!", inline=True)
         embed.add_field(name="!github", value="Check out my GitHub", inline=True)
         embed.add_field(name="!quote", value="Get a Famous random Quote", inline=True)
+        embed.add_field(name="!rps", value="Play a game of Rock, Paper & Scissors.", inline=True)
         embed.add_field(name="!guess", value="Play the number guessing game! usage: ``!guess <min> <max>``", inline=False)
         embed.add_field(name="!spam", value="usage: ``!spam <amount> <your message>``", inline=False)
         embed.set_footer(text="Information requested by: {}".format(ctx.author.display_name))
