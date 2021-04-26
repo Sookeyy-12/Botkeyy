@@ -36,12 +36,14 @@ class BotCommands(commands.Cog):
     # Hello command
     @commands.command()
     async def hello(self, ctx):
+        """ Hello! """
         await ctx.channel.send("Hello! :wave:")
     
     # Bot Info Command
     @commands.command()
     async def botinfo(self, ctx):
-        await ctx.channel.send("Am just a shitty BOT created by Sookeyy...")
+        await ctx.channel.send("""Bot v1.4.1.
+        Botkeyy is coded in Python by Sookeyy#0465""")
 
     # Owner Info Command
     @commands.command()
