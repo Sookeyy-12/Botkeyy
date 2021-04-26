@@ -5,6 +5,7 @@ import asyncio
 from cogs.packages.jokes import get_joke        # importing get_joke from packages
 from cogs.packages.memes import get_meme        # importing get_meme from packages
 from cogs.packages.quotes import get_quote      # importing get_quote from packages
+import time
 
 bot = commands.Bot(command_prefix="!")  # define bot
 
@@ -13,14 +14,24 @@ class BotCommands(commands.Cog):
         self.bot = bot
 
     # Ping command
-    @commands.command()
+    @commands.command(pass_context=True)
     async def ping(self, ctx):
-        await ctx.message.channel.send("Pong! {0}".format(round(self.bot.latency, 2)))
+        """ Pong! """
+        before = time.monotonic()
+        message = await ctx.send("Pong!")
+        ping = (time.monotonic() - before) * 1000
+        await message.edit(content=f"Pong!  `{int(ping)}ms`")
+        print(f'Ping {int(ping)}ms')
 
     # Pong command
     @commands.command()	
     async def pong(self, ctx):
-        await ctx.channel.send("Ping! {0}".format(round(self.bot.latency, 2)))
+        """ Ping! """
+        before = time.monotonic()
+        message = await ctx.send("Ping!")
+        ping = (time.monotonic() - before) * 1000
+        await message.edit(content=f"Ping!  `{int(ping)}ms`")
+        print(f'Ping {int(ping)}ms')
 
     # Hello command
     @commands.command()
