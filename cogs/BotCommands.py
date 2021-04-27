@@ -130,23 +130,26 @@ class BotCommands(commands.Cog):
                     break
                     
     # Rock Paper Scissors
-    @commands.command(name='rps')
+    @commands.command(name='playrps')
     async def rps(self, ctx):
-        await ctx.channel.send('Choose one from Rock, Paper, Scissors')
-        answer_index = random.randint(0,2)
-        choices = ['Rock', 'Paper', 'Scissors']
-        bot_choice = choices[answer_index]
-        user_choice = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author)
-        if user_choice.content.lower() == bot_choice.lower():
-            await ctx.channel.send(f'Its a Draw! I chose {bot_choice}.')
-        elif (user_choice.content.lower() == 'scissors' and bot_choice == 'Rock') or (user_choice.content.lower() == 'rock' and bot_choice == 'Paper') or (user_choice.content.lower() == 'paper' and bot_choice == 'Scissors'):
-            await ctx.channel.send(f'You lost... I chose {bot_choice}')
-        elif (user_choice.content.lower() == 'scissors' and bot_choice == 'Paper') or (user_choice.content.lower() == 'rock' and bot_choice == 'Scissors') or (user_choice.content.lower() == 'paper' and bot_choice == 'Rock'):
-            await ctx.channel.send(f'You Won! I chose {bot_choice}')
-        elif user_choice.content.lower() != 'rock' or 'Rock' or 'Paper' or 'paper' or 'scissors' or 'Scissors': 
-            await ctx.channel.send('Invalid Choice, please run the command again to play.')
+        message = await ctx.channel.send('Choose one from Rock, Paper, Scissors')
+        choices = ['🪨', '📄', '✂️']
+        for choice in choices:
+            await message.add_reaction(choice)
+        answer = random.randint(0,2)
+        bot_choice = choices[answer]
+        reaction, user = await self.bot.wait_for('reaction_add', check= lambda r, u: u == ctx.author and r.message == message)
+        if reaction.emoji == '🪨' and bot_choice == '✂️':
+            await ctx.send(f'You Won! I chose {bot_choice}')
+        elif reaction.emoji == '📄' and bot_choice == '🪨':
+            await ctx.send(f'You Won! I chose {bot_choice}')
+        elif reaction.emoji == '✂️' and bot_choice == '📄':
+            await ctx.send(f'You Won! I chose {bot_choice}')
+        elif reaction.emoji == bot_choice:
+            await ctx.send(f'Its a Draw! I chose {bot_choice} too!')
         else:
-            pass
+            await ctx.send(f'You Lost... I chose {bot_choice}')
+        
 
 
 def setup(bot):
