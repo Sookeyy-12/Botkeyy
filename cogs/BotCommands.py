@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import random
-import asyncio
 from cogs.packages.jokes import get_joke        # importing get_joke from packages
 from cogs.packages.memes import get_meme        # importing get_meme from packages
 from cogs.packages.quotes import get_quote      # importing get_quote from packages
@@ -13,42 +12,11 @@ class BotCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # Ping command
-    @commands.command(pass_context=True)
-    async def ping(self, ctx):
-        """ Pong! """
-        before = time.monotonic()
-        message = await ctx.send("Pong!")
-        ping = (time.monotonic() - before) * 1000
-        await message.edit(content=f"Pong!  `{int(ping)}ms`")
-        print(f'Ping {int(ping)}ms')
-
-    # Pong command
-    @commands.command()	
-    async def pong(self, ctx):
-        """ Ping! """
-        before = time.monotonic()
-        message = await ctx.send("Ping!")
-        ping = (time.monotonic() - before) * 1000
-        await message.edit(content=f"Ping!  `{int(ping)}ms`")
-        print(f'Ping {int(ping)}ms')
-
     # Hello command
     @commands.command()
     async def hello(self, ctx):
         """ Hello! """
         await ctx.channel.send("Hello! :wave:")
-    
-    # Bot Info Command
-    @commands.command()
-    async def botinfo(self, ctx):
-        await ctx.channel.send("""Bot v1.4.1.
-        Botkeyy is coded in Python by Sookeyy#0465""")
-
-    # Owner Info Command
-    @commands.command()
-    async def ownerinfo(self, ctx):
-        await ctx.channel.send("https://github.com/Sookeyy-12")
 
     # Cat
     @commands.command()
@@ -80,15 +48,6 @@ class BotCommands(commands.Cog):
         quote = get_quote()
         await ctx.channel.send(quote)
 
-    # Discord Command
-    @commands.command()
-    async def discord(self, ctx):
-        await ctx.channel.send('https://discord.gg/RKkg7EyD43')
-
-    # GitHub Command
-    @commands.command()
-    async def github(self, ctx):
-        await ctx.channel.send('https://github.com/Sookeyy-12')
 
     # Spam Command
     @commands.command()
@@ -100,56 +59,6 @@ class BotCommands(commands.Cog):
             await ctx.channel.send('Too big, please input less than 30.')  
         else:
             pass
-
-    # Guessing Game
-    @commands.command()
-    async def guess(self, ctx, x=None, y=None):
-        if x is None or y is None :
-            await ctx.channel.send('Please Provide a Range.')
-        elif (int(y) - int(x)) > 1001:
-            await ctx.channel.send('Range too big, Please Reduce the Range.')
-        elif (int(y)-int(x)) <= 1001:
-            await ctx.channel.send(f'Guess a Number from {int(x)} to {int(y)}.')
-            answer = random.randint(int(x),int(y))
-            attempt = 0
-            while True:
-                attempt += 1
-                try:
-                    guess = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author, timeout=10.0)
-                except asyncio.TimeoutError:
-                    return await ctx.channel.send(f'Sorry, You took too long, it was {answer}.')
-                if int(attempt) == 15:
-                    await ctx.channel.send(f'You took too many attempts, the answer was {answer}!')
-                    break
-                elif int(guess.content) < answer:
-                    await ctx.channel.send('The Number should be Bigger!')
-                elif int(guess.content) > answer:
-                    await ctx.channel.send('The Number should be Smaller!')
-                elif int(guess.content) == answer:
-                    await ctx.channel.send(f'Bingo! You guess the number in {attempt} attempt(s)')
-                    break
-                    
-    # Rock Paper Scissors
-    @commands.command(name='playrps')
-    async def rps(self, ctx):
-        message = await ctx.channel.send('Choose one from Rock, Paper, Scissors')
-        choices = ['🪨', '📄', '✂️']
-        for choice in choices:
-            await message.add_reaction(choice)
-        answer = random.randint(0,2)
-        bot_choice = choices[answer]
-        reaction, user = await self.bot.wait_for('reaction_add', check= lambda r, u: u == ctx.author and r.message == message)
-        if reaction.emoji == '🪨' and bot_choice == '✂️':
-            await ctx.send(f'You Won! I chose {bot_choice}')
-        elif reaction.emoji == '📄' and bot_choice == '🪨':
-            await ctx.send(f'You Won! I chose {bot_choice}')
-        elif reaction.emoji == '✂️' and bot_choice == '📄':
-            await ctx.send(f'You Won! I chose {bot_choice}')
-        elif reaction.emoji == bot_choice:
-            await ctx.send(f'Its a Draw! I chose {bot_choice} too!')
-        else:
-            await ctx.send(f'You Lost... I chose {bot_choice}')
-        
 
 
 def setup(bot):
