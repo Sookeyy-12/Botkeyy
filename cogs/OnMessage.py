@@ -14,7 +14,7 @@ class OnMessage(commands.Cog):
         if message.author.bot: return
 
         # cat in the chat
-        if 'cat' in message.content:
+        if 'cats' in message.content:
             await message.channel.send('Did someone say cats? ᓚᘏᗢ')
 
 def setup(bot):
