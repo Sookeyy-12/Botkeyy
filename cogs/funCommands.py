@@ -4,12 +4,14 @@ from discord.ext import commands
 import random
 
 class funCommands(commands.Cog):
+    """ Fun Games to play with the Bot """
     def __init__(self,bot):
         self.bot = bot
     
     # Guessing Game
     @commands.command()
     async def guess(self, ctx, x=None, y=None):
+        """ Guess a Number from a Range provided by the user. Usage: !guess <min> <max> """ 
         if x is None or y is None :
             await ctx.channel.send('Please Provide a Range.')
         elif (int(y) - int(x)) > 1001:
@@ -38,6 +40,7 @@ class funCommands(commands.Cog):
     # Rock Paper Scissors
     @commands.command(name='playrps')
     async def rps(self, ctx):
+        """ Play a game of Rock, Paper, Scissors with Bot """
         message = await ctx.channel.send('Choose one from Rock, Paper, Scissors')
         choices = ['🪨', '📄', '✂️']
         for choice in choices:
@@ -55,6 +58,18 @@ class funCommands(commands.Cog):
             await ctx.send(f'Its a Draw! I chose {bot_choice} too!')
         else:
             await ctx.send(f'You Lost... I chose {bot_choice}')
+
+        # Spam Command
+    @commands.command()
+    async def spam(self, ctx, n, *, sentence):
+        """ Spam Command. Usage: !spam <amount> <your message>"""
+        if int(n) <= 30:
+            for i in range(int(n)):
+                await ctx.channel.send(sentence)
+        elif int(n) > 30:
+            await ctx.channel.send('Too big, please input less than 30.')  
+        else:
+            pass
 
 def setup(bot):
     bot.add_cog(funCommands(bot))

@@ -11,7 +11,7 @@ intents = discord.Intents().all()
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 menu = DefaultMenu('◀️', '▶️', '❌')
-bot.help_command = PrettyHelp(navigation=menu, color=discord.Colour.green())
+bot.help_command = PrettyHelp(navigation=menu, color=discord.Colour.teal())
 
 @bot.event
 async def on_ready():
@@ -25,7 +25,11 @@ async def on_member_join(member):
         to_send = 'Welcome {0.mention} to {1.name}!'.format(member, guild)
         await guild.system_channel.send(to_send)
         
-extensions = ['cogs.infoCommands','cogs.OnMessage','cogs.utilityCommands','cogs.BotCommands','cogs.funCommands']
+extensions = ['cogs.infoCommands',
+'cogs.OnMessage',
+'cogs.utilityCommands',
+'cogs.BotCommands',
+'cogs.funCommands']
 
 if __name__ == '__main__':
     for ext in extensions:
