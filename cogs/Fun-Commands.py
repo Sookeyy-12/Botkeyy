@@ -3,7 +3,7 @@ import asyncio
 from discord.ext import commands
 import random
 
-class funCommands(commands.Cog):
+class FunCommands(commands.Cog):
     """ Fun Games to play with the Bot """
     def __init__(self,bot):
         self.bot = bot
@@ -72,4 +72,4 @@ class funCommands(commands.Cog):
             pass
 
 def setup(bot):
-    bot.add_cog(funCommands(bot))
+    bot.add_cog(FunCommands(bot))

@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-class utilityCommands(commands.Cog):
+class UtilityCommands(commands.Cog):
     """ Ping/Pong and Bot's Response time """
     def __init__(self,bot):
         self.bot = bot
@@ -27,4 +27,4 @@ class utilityCommands(commands.Cog):
         print(f'Ping {int(ping)}ms')
 
 def setup(bot):
-    bot.add_cog(utilityCommands(bot))
+    bot.add_cog(UtilityCommands(bot))

@@ -25,11 +25,11 @@ async def on_member_join(member):
         to_send = 'Welcome {0.mention} to {1.name}!'.format(member, guild)
         await guild.system_channel.send(to_send)
         
-extensions = ['cogs.infoCommands',
-'cogs.OnMessage',
-'cogs.utilityCommands',
-'cogs.BotCommands',
-'cogs.funCommands']
+extensions = ['cogs.Info-Commands',
+    'cogs.OnMessage',
+    'cogs.Utility-Commands',
+    'cogs.Bot-Commands',
+    'cogs.Fun-Commands']
 
 if __name__ == '__main__':
     for ext in extensions:

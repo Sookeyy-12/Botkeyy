@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-class infoCommands(commands.Cog):
+class InfoCommands(commands.Cog):
     """ Info about Bot and Owner """
     def __init__(self, bot):
         self.bot = bot
@@ -10,7 +10,7 @@ class infoCommands(commands.Cog):
     @commands.command()
     async def botinfo(self, ctx):
         """ Information about Bot """
-        await ctx.channel.send("""**__Bot v1.7.5.__**
+        await ctx.channel.send("""**__Bot v1.7.7__**
 **Updates:** Added better Help Command (Thanks to Rachit)
 **Info:** *Botkeyy is coded in Python by Sookeyy#0465*""")
 
@@ -33,4 +33,4 @@ class infoCommands(commands.Cog):
         await ctx.channel.send('https://github.com/Sookeyy-12')
 
 def setup(bot):
-    bot.add_cog(infoCommands(bot))
+    bot.add_cog(InfoCommands(bot))
