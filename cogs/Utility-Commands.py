@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import time
 
 class UtilityCommands(commands.Cog):
     """ Ping/Pong and Bot's Response time """
