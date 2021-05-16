@@ -5,4 +5,3 @@ async-timeout
 dotenv
 Cogs==0.4.4
 discord-pretty-help==1.3.0
-discord.py==1.7.1
