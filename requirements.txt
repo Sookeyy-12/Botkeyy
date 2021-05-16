@@ -5,3 +5,4 @@ async-timeout
 python-dotenv==0.17.0
 Cogs==0.4.4
 discord-pretty-help==1.3.0
+requests==2.25.1
