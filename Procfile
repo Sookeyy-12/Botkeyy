@@ -1,1 +1,1 @@
-worker: python botkeyy.py
+worker python: Botkeyy.py
