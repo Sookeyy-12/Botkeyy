@@ -16,7 +16,7 @@ bot.help_command = PrettyHelp(navigation=menu, color=discord.Colour.teal())
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    await bot.change_presence(status = discord.Status.online, activity = discord.Game("!help"))
+    await bot.change_presence(status = discord.Status.online, activity = discord.Game("Now running 24/7! Help command down atm."))
 
 @bot.event
 async def on_member_join(member):
