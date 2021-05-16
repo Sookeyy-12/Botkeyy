@@ -54,5 +54,11 @@ class BotCommands(commands.Cog):
         quote = get_quote()
         await ctx.channel.send(quote)
 
+    # Bot's Invite
+    @commands.command()
+    async def invite(self, ctx):
+        """Invite the Bot to your Server!"""
+        await ctx.channel.send('https://discord.com/api/oauth2/authorize?client_id=833751180760711189&permissions=8&scope=bot')
+
 def setup(bot):
     bot.add_cog(BotCommands(bot))
