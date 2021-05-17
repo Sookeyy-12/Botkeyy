@@ -49,15 +49,23 @@ class FunCommands(commands.Cog):
         bot_choice = choices[answer]
         reaction, user = await self.bot.wait_for('reaction_add', check= lambda r, u: u == ctx.author and r.message == message)
         if reaction.emoji == '🪨' and bot_choice == '✂️':
-            await ctx.send(f'You Won! I chose {bot_choice}')
+            result = await ctx.send(f'You Won! I chose {bot_choice}')
+            await result.add_reaction('♻️')
         elif reaction.emoji == '📄' and bot_choice == '🪨':
-            await ctx.send(f'You Won! I chose {bot_choice}')
+            result = await ctx.send(f'You Won! I chose {bot_choice}')
+            await result.add_reaction('♻️')
         elif reaction.emoji == '✂️' and bot_choice == '📄':
-            await ctx.send(f'You Won! I chose {bot_choice}')
+            result = await ctx.send(f'You Won! I chose {bot_choice}')
+            await result.add_reaction('♻️')
         elif reaction.emoji == bot_choice:
-            await ctx.send(f'Its a Draw! I chose {bot_choice} too!')
+            result = await ctx.send(f'Its a Draw! I chose {bot_choice} too!')
+            await result.add_reaction('♻️')
         else:
-            await ctx.send(f'You Lost... I chose {bot_choice}')
+            result = await ctx.send(f'You Lost... I chose {bot_choice}')
+            await result.add_reaction('♻️')
+        reaction, user = await self.bot.wait_for('reaction_add', check= lambda r, u: u == ctx.author and r.message == result)
+        if reaction.emoji == '♻️':
+            await ctx.invoke(self.bot.get_command('playrps'))
 
         # Spam Command
     @commands.command()

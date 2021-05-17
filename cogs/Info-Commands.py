@@ -10,9 +10,9 @@ class InfoCommands(commands.Cog):
     @commands.command()
     async def botinfo(self, ctx):
         """ Information about Bot """
-        await ctx.channel.send("""**__Bot v2.0.0__**
-**Updates:** Bot now Runs __24/7__!!
-**Info:** *Help Command is temporarily down.*""")
+        await ctx.channel.send("""**__Bot v2.1.0__**
+**Updates:** Bot now Runs __24/7__!! Play RPS again by just reaction with ♻️!
+**Info:** *Dynamic Help Command is temporarily down.*""")
 
     # Owner Info Command
     @commands.command()
