@@ -49,19 +49,19 @@ class FunCommands(commands.Cog):
         bot_choice = choices[answer]
         reaction, user = await self.bot.wait_for('reaction_add', check= lambda r, u: u == ctx.author and r.message == message)
         if reaction.emoji == '🧱' and bot_choice == '✂️':
-            result = await ctx.send('{0.mention} Won! I chose {bot_choice}'.format(ctx.author, bot_choice))
+            result = await ctx.send(f'{ctx.author.mention} You **Won**! I chose {bot_choice}')
             await result.add_reaction('♻️')
         elif reaction.emoji == '📄' and bot_choice == '🧱':
-            result = await ctx.send('{0.mention} Won! I chose {bot_choice}'.format(ctx.author, bot_choice))
+            result = await ctx.send(f'{ctx.author.mention} You **Won**! I chose {bot_choice}')
             await result.add_reaction('♻️')
         elif reaction.emoji == '✂️' and bot_choice == '📄':
-            result = await ctx.send('{0.mention} Won! I chose {bot_choice}'.format(ctx.author, bot_choice))
+            result = await ctx.send(f'{ctx.author.mention} You **Won**! I chose {bot_choice}')
             await result.add_reaction('♻️')
         elif reaction.emoji == bot_choice:
-            result = await ctx.send('{0.mention} Its a Draw! I chose {bot_choice} too!'.format(ctx.author, bot_choice))
+            result = await ctx.send(f'{ctx.author.mention} Its a **Draw**! I chose {bot_choice} too!')
             await result.add_reaction('♻️')
         else:
-            result = await ctx.send('{0.mention} You Lost... I chose {bot_choice}'.format(ctx.author, bot_choice))
+            result = await ctx.send(f'{ctx.author.mention} You **Lost**... I chose {bot_choice}')
             await result.add_reaction('♻️')
         reaction, user = await self.bot.wait_for('reaction_add', check= lambda r, u: u == ctx.author and r.message == result)
         if reaction.emoji == '♻️':
