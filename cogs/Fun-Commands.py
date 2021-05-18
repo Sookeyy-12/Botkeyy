@@ -42,16 +42,16 @@ class FunCommands(commands.Cog):
     async def rps(self, ctx):
         """ Play a game of Rock, Paper, Scissors with Bot """
         message = await ctx.channel.send('Choose one from Rock, Paper, Scissors')
-        choices = ['🪨', '📄', '✂️']
+        choices = ['🧱', '📄', '✂️']
         for choice in choices:
             await message.add_reaction(choice)
         answer = random.randint(0,2)
         bot_choice = choices[answer]
         reaction, user = await self.bot.wait_for('reaction_add', check= lambda r, u: u == ctx.author and r.message == message)
-        if reaction.emoji == '🪨' and bot_choice == '✂️':
+        if reaction.emoji == '🧱' and bot_choice == '✂️':
             result = await ctx.send(f'You Won! I chose {bot_choice}')
             await result.add_reaction('♻️')
-        elif reaction.emoji == '📄' and bot_choice == '🪨':
+        elif reaction.emoji == '📄' and bot_choice == '🧱':
             result = await ctx.send(f'You Won! I chose {bot_choice}')
             await result.add_reaction('♻️')
         elif reaction.emoji == '✂️' and bot_choice == '📄':
