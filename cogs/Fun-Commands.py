@@ -65,6 +65,8 @@ class FunCommands(commands.Cog):
             await result.add_reaction('♻️')
         reaction, user = await self.bot.wait_for('reaction_add', check= lambda r, u: u == ctx.author and r.message == result)
         if reaction.emoji == '♻️':
+            await message.delete()
+            await result.delete()
             await ctx.invoke(self.bot.get_command('playrps'))
 
         # Spam Command
