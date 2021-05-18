@@ -26,7 +26,8 @@ extensions = ['cogs.Info-Commands',
     'cogs.OnMessage',
     'cogs.Utility-Commands',
     'cogs.Bot-Commands',
-    'cogs.Fun-Commands']
+    'cogs.Fun-Commands',
+    'cogs.Moderation-Commands']
 
 if __name__ == '__main__':
     for ext in extensions:
