@@ -16,32 +16,59 @@ class BotCommands(commands.Cog):
     # Pijja command
     @commands.command()
     async def pijja(self, ctx):
-        """ sends :rakshu_pijja3: """
+        """ sends rakshu pijja emoji """
         await ctx.channel.send("<:rakshu_pijja3:912246061790273546>")
         
     # Dumbo command
     @commands.command()
     async def dumbo(self, ctx):
-        """ sends :rakshu_pijja3: """
+        """ sends rakshu dumbo emoji """
         await ctx.channel.send("<:rakshu_dumbo:835752792588156928>")
         
-    # bigeyes command
+    # Bigeyes command
     @commands.command()
     async def bigeyes(self, ctx):
-        """ sends :rakshu_pijja3: """
+        """ sends rakshu bigeyes emoji """
         await ctx.channel.send("<:rakshu_bigeyes:835747245231702066>")
         
-    # shrug command
+    # Shrug command
     @commands.command()
     async def shrug(self, ctx):
-        """ sends :rakshu_pijja3: """
+        """ sends rakshu shrug emoji """
         await ctx.channel.send("<:rakshu_shrug:868151545680789555>")
         
-    # bigeyes command
+    # Rage command
     @commands.command()
     async def rage(self, ctx):
-        """ sends :rakshu_pijja3: """
+        """ sends rakshu bigeyes emoji """
         await ctx.channel.send("<:rakshu_rage:836087210779738122>")
+                
+    # Amazed command
+    @commands.command()
+    async def rage(self, ctx):
+        """ sends rakshu amazed emoji """
+        await ctx.channel.send("<:rakshu_amazed:835503488083165205>")
+        
+     # Happy command
+    @commands.command()
+    async def pijja(self, ctx):
+        """ sends rakshu happy emoji """
+        await ctx.channel.send("<:rakshu_happy:835507548044001291>")
+        
+    # Sweat command
+    @commands.command()
+    async def pijja(self, ctx):
+        """ sends rakshu sweat smile emoji """
+        await ctx.channel.send("<:rakshu_sweat_smile:868076020878684192>") 
+        
+    # Partying command
+    @commands.command()
+    async def pijja(self, ctx):
+        """ sends rakshu partying emoji """
+        await ctx.channel.send("<:Rakshu_partying:878666695378628698>") 
+        
+        
+       
 
     # Cat
     @commands.command()
