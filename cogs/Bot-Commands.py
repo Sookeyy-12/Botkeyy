@@ -13,11 +13,11 @@ class BotCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # Hello command
+    # Pijja command
     @commands.command()
     async def hello(self, ctx):
-        """ Says Hello! """
-        await ctx.channel.send("Hello! :wave:")
+        """ sends :rakshu_pijja3: """
+        await ctx.channel.send(":rakshu_pijja3:")
 
     # Cat
     @commands.command()
