@@ -17,7 +17,31 @@ class BotCommands(commands.Cog):
     @commands.command()
     async def pijja(self, ctx):
         """ sends :rakshu_pijja3: """
-        await ctx.channel.send(":rakshu_pijja3:")
+        await ctx.channel.send("<:rakshu_pijja3:912246061790273546>")
+        
+    # Dumbo command
+    @commands.command()
+    async def dumbo(self, ctx):
+        """ sends :rakshu_pijja3: """
+        await ctx.channel.send("<:rakshu_dumbo:835752792588156928>")
+        
+    # bigeyes command
+    @commands.command()
+    async def bigeyes(self, ctx):
+        """ sends :rakshu_pijja3: """
+        await ctx.channel.send("<:rakshu_bigeyes:835747245231702066>")
+        
+    # shrug command
+    @commands.command()
+    async def shrug(self, ctx):
+        """ sends :rakshu_pijja3: """
+        await ctx.channel.send("<:rakshu_shrug:868151545680789555>")
+        
+    # bigeyes command
+    @commands.command()
+    async def rage(self, ctx):
+        """ sends :rakshu_pijja3: """
+        await ctx.channel.send("<:rakshu_rage:836087210779738122>")
 
     # Cat
     @commands.command()
