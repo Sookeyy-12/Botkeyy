@@ -45,25 +45,25 @@ class BotCommands(commands.Cog):
                 
     # Amazed command
     @commands.command()
-    async def rage(self, ctx):
+    async def amazed(self, ctx):
         """ sends rakshu amazed emoji """
         await ctx.channel.send("<:rakshu_amazed:835503488083165205>")
         
      # Happy command
     @commands.command()
-    async def pijja(self, ctx):
+    async def happy(self, ctx):
         """ sends rakshu happy emoji """
         await ctx.channel.send("<:rakshu_happy:835507548044001291>")
         
     # Sweat command
     @commands.command()
-    async def pijja(self, ctx):
+    async def sweat(self, ctx):
         """ sends rakshu sweat smile emoji """
         await ctx.channel.send("<:rakshu_sweat_smile:868076020878684192>") 
         
     # Partying command
     @commands.command()
-    async def pijja(self, ctx):
+    async def party(self, ctx):
         """ sends rakshu partying emoji """
         await ctx.channel.send("<:Rakshu_partying:878666695378628698>") 
         
