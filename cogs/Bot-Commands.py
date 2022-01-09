@@ -15,7 +15,7 @@ class BotCommands(commands.Cog):
 
     # Pijja command
     @commands.command()
-    async def hello(self, ctx):
+    async def pijja(self, ctx):
         """ sends :rakshu_pijja3: """
         await ctx.channel.send(":rakshu_pijja3:")
 
