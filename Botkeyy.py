@@ -31,7 +31,7 @@ extensions = ['cogs.Info-Commands',
 
 if __name__ == '__main__':
     for ext in extensions:
-        await bot.load_extension(ext)
+        bot.load_extension(ext)
         
 bot.run(os.getenv('DISCORD_TOKEN'))
 
